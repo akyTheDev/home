@@ -17,7 +17,18 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-            }
+                javascript = { "prettier" },
+                javascriptreact = { "prettier" },
+                typescript = { "prettier" },
+                typescriptreact = { "prettier" },
+            },
+            formatters = {
+                prettier = {
+                    command = "./node_modules/.bin/prettier",
+                    args = { "--stdin-filepath", "$FILENAME" },
+                    cwd = require("conform.util").root_file({ ".prettierrc", "package.json", ".git" }),
+                },
+            },
         })
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -36,6 +47,7 @@ return {
                 "gopls",
                 "pyright",
                 "ruff",
+                "ts_ls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -58,7 +70,6 @@ return {
                     })
                     vim.g.zig_fmt_parse_errors = 0
                     vim.g.zig_fmt_autosave = 0
-
                 end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -74,6 +85,40 @@ return {
                         }
                     }
                 end,
+
+                ["ts_ls"] = function()
+                    require("lspconfig").ts_ls.setup({
+                        capabilities = capabilities,
+                        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+                        settings = {
+                            typescript = {
+                                updateImportsOnFileMove = { enabled = "always" },
+                                inlayHints = {
+                                    includeInlayEnumMemberValueHints = true,
+                                    includeInlayFunctionLikeReturnTypeHints = true,
+                                    includeInlayFunctionParameterTypeHints = true,
+                                    includeInlayParameterNameHints = "literals", -- 'none' | 'literals' | 'all';
+                                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                                    includeInlayPropertyDeclarationTypeHints = true,
+                                    includeInlayVariableTypeHints = true,
+                                },
+                            },
+                            javascript = {
+                                updateImportsOnFileMove = { enabled = "always" },
+                                inlayHints = {
+                                    includeInlayEnumMemberValueHints = true,
+                                    includeInlayFunctionLikeReturnTypeHints = true,
+                                    includeInlayFunctionParameterTypeHints = true,
+                                    includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                                    includeInlayPropertyDeclarationTypeHints = true,
+                                    includeInlayVariableTypeHints = true,
+                                },
+                            },
+                        },
+                    })
+                end,
+
             }
         })
 
