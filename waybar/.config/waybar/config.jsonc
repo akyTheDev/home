@@ -1,0 +1,53 @@
+{
+  "position": "top",
+  "modules-left": ["sway/workspaces"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["custom/music","network", "pulseaudio", "temperature","memory","cpu","clock", "custom/power"],
+  "clock": {
+    "format": "<span foreground='#f5c2e7'>   </span>{:%H:%M || %a, %D}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "network": {
+    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
+    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+  },
+  "pulseaudio": {
+      "format": "{icon}  {volume}%",
+      "format-muted": "",
+      "format-icons": {
+          "default": ["", "", " "]
+      },
+      "on-click": "pavucontrol"
+  },
+  "cpu": {
+    "format": "   {usage}%",
+    "tooltip": true,
+    "on-click": "foot -e btop"
+  },
+  "memory": {
+    "format": "   {used:0.1f}G/{total:0.1f}G",
+    "tooltip": true,
+    "on-click": "foot -e btop"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": " {temperatureC}°C",
+    "tooltip": true
+  },
+  "custom/music": {
+      "format": " {}",
+      "tooltip": false,
+      "max-length": 40,
+      "exec": "playerctl metadata --format '{{ artist }} - {{ title }}'",
+      "on-click": "playerctl play-pause"
+    },
+    "custom/power": {
+      "format": "    ",
+      "tooltip": true,
+      "tooltip-text": "Power Menu",
+      "on-click": "wlogout"
+    },
+}
