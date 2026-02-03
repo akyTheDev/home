@@ -33,7 +33,7 @@ autocmd({"BufWritePre"}, {
 autocmd('BufEnter', {
     group = AkyGroup,
     callback = function()
-        vim.cmd.colorscheme("tokyonight-storm")
+        -- vim.cmd.colorscheme("")
     end
 })
 

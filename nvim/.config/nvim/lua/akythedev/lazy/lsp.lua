@@ -17,6 +17,7 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
+                go = { "goimports", "gofmt" },
                 javascript = { "prettier" },
                 javascriptreact = { "prettier" },
                 typescript = { "prettier" },
@@ -42,8 +43,6 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "lua_ls",
-                "rust_analyzer",
                 "gopls",
                 "pyright",
                 "ruff",
