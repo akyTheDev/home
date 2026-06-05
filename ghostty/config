@@ -1,0 +1,41 @@
+theme = moonfly
+
+window-padding-x = 6
+window-padding-y = 6
+
+fullscreen = non-native
+
+window-decoration = none
+macos-titlebar-style = hidden
+
+# Pencere yeniden boyutlandırılırken ekranda beliren o çirkin sayısal overlay'i kapatır
+resize-overlay = never
+
+# ── 2. Yazı Tipi ve Inlay Hint Optimizasyonları ──
+font-family = "JetBrainsMono Nerd Font"
+font-size = 12
+font-feature = "calt"
+font-feature = "liga"
+
+# İnce yazıların terminalde soluk kalmasını engellemek için hafifçe kalınlaştırır (FREETYPE LIGHT HINTING)
+font-synthetic-style = bold,italic
+
+# ── 3. İmleç (Cursor) Ayarları ──
+cursor-style = block
+cursor-style-blink = false
+adjust-cursor-thickness = 150%
+
+# Kod yazarken mouse imlecini gizler, dikkatin dağılmaz
+mouse-hide-while-typing = true
+
+# Ghostty'nin kendi yerleşik sekmelerini ve bölmelerini KISAYOLLARLA EZİYORUZ.
+# Böylece yanlışlıkla Ghostty sekmesi açıp TMUX ile çakışma yaşamazsın.
+keybind = super+t=unbind
+keybind = super+d=unbind
+keybind = super+w=unbind
+
+# macOS'teki Option tuşunun TMUX/Neovim içinde "Alt" tuşu (Meta Key) gibi davranmasını sağlar
+macos-option-as-alt = left
+
+# Terminalden çıkarken veya pencereyi kapatırken "Emin misiniz?" diye sormasın
+confirm-close-surface = false

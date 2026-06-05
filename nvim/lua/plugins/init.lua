@@ -1,0 +1,15 @@
+vim.pack.add({
+	'https://github.com/ibhagwan/fzf-lua',
+	'https://github.com/nvim-treesitter/nvim-treesitter',
+	'https://github.com/neovim/nvim-lspconfig',
+	'https://github.com/karb94/neoscroll.nvim',
+	'https://github.com/stevearc/oil.nvim',
+	'https://github.com/kdheepak/lazygit.nvim',
+	'https://github.com/esmuellert/codediff.nvim',
+	'https://github.com/goolord/alpha-nvim',
+	{ src = 'https://github.com/saghen/blink.cmp',          version = vim.version.range('1.x') },
+	{ src = "https://github.com/bluz71/vim-moonfly-colors", name = "moonfly" },
+	{ src = 'https://github.com/nvim-lua/plenary.nvim',     type = 'start' },
+	{ src = 'https://github.com/ThePrimeagen/harpoon',      branch = 'harpoon2' },
+	'https://github.com/windwp/nvim-autopairs',
+})

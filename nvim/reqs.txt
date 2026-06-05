@@ -1,0 +1,5 @@
+brew install lua-language-server
+brew install lazygit
+npm install -g typescript-language-server typescript
+
+
